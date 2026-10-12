@@ -3,288 +3,1306 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f7f7f4">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hidden Gems — Places Worth Finding</title>
-    <meta name="description" content="Discover lesser-known destinations, local traditions and cultural stories across India.">
+    <title>Hidden Gems | Find the Other Side of India</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="Discover lesser-known destinations across India, from quiet coastal towns and heritage streets to beautiful landscapes and traditional crafts.">
 
-    <!-- Fonts -->
+    <meta name="theme-color" content="#f8f7f3">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== PAGE FOUNDATION ===== */
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+        
+        body {
+            margin: 0;
+            background: var(--paper, #f8f7f3);
+            color: var(--ink, #292c29);
+            font-family: "DM Sans", Arial, sans-serif;
+        }
+        
+        a {
+            color: inherit;
+        }
+        
+        .site-shell {
+            width: min(1380px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+        /* ===== NAVIGATION ===== */
+        
+        .site-nav {
+            position: relative;
+            z-index: 20;
+            padding: 23px 0;
+            background: var(--paper, #f8f7f3);
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--ink, #292c29);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        
+        .brand-symbol {
+            display: grid;
+            place-items: center;
+            width: 37px;
+            height: 37px;
+            border: 1px solid var(--accent, #426657);
+            border-radius: 50%;
+            color: var(--accent, #426657);
+            font-family: Georgia, serif;
+            font-size: 22px;
+        }
+        
+        .brand-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .brand-name {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 21px;
+            line-height: 1;
+        }
+        
+        .brand-tagline {
+            color: var(--muted, #777970);
+            font-size: 8px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(15px, 2.7vw, 37px);
+        }
+        
+        .nav-links a {
+            padding: 7px 0;
+            color: var(--muted, #777970);
+            font-size: 11px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent, #426657);
+        }
+        
+        .nav-links a.active {
+            border-bottom: 1px solid var(--accent, #426657);
+        }
+        
+        .nav-saved {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 13px;
+            border: 1px solid var(--line, #e2e0d8);
+            background: transparent;
+            color: var(--ink, #292c29);
+            font: inherit;
+            font-size: 10px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+        
+        .nav-saved:hover,
+        .nav-saved.active {
+            border-color: var(--accent, #426657);
+            background: var(--accent-light, #e8eee8);
+        }
+        
+        .saved-heart {
+            color: var(--accent, #426657);
+            font-size: 15px;
+        }
+        /* ===== HERO ===== */
+        
+        .home-hero {
+            position: relative;
+            min-height: min(790px, calc(100svh - 85px));
+            min-height: max(650px, min(790px, calc(100svh - 85px)));
+            overflow: hidden;
+            isolation: isolate;
+            display: flex;
+            align-items: center;
+            padding: 110px clamp(28px, 6vw, 90px) 155px;
+            margin: 0 auto 85px;
+            width: min(1600px, calc(100% - 36px));
+            color: #fffaf0;
+            background: #283a2d;
+            border-radius: 5px;
+        }
+        
+        .hero-photo,
+        .hero-shade {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        
+        .hero-photo {
+            background-image: url("images/hidden-gems-hero.jpg");
+            background-position: center 48%;
+            background-size: cover;
+            transform: scale(1.015);
+            animation: hero-arrive 1.2s ease-out both;
+        }
+        
+        .hero-shade {
+            background: linear-gradient( 90deg, rgba(16, 29, 21, 0.86) 0%, rgba(16, 29, 21, 0.66) 34%, rgba(16, 29, 21, 0.17) 72%, rgba(16, 29, 21, 0.28) 100%), linear-gradient( 0deg, rgba(14, 23, 17, 0.83) 0%, transparent 36%, rgba(20, 26, 20, 0.12) 100%);
+        }
+        
+        .hero-topline {
+            position: absolute;
+            top: 28px;
+            left: clamp(24px, 4vw, 58px);
+            right: clamp(24px, 4vw, 58px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 250, 240, 0.34);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+        }
+        
+        .hero-edition {
+            color: rgba(255, 250, 240, 0.72);
+            text-align: right;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+            padding-top: 20px;
+        }
+        
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+            color: #e4c58f;
+            font-size: 10px;
+            letter-spacing: 0.19em;
+        }
+        
+        .hero-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d9b777;
+        }
+        
+        .hero-content h1 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(58px, 7.6vw, 108px);
+            font-weight: 400;
+            line-height: 0.99;
+            letter-spacing: -0.065em;
+        }
+        
+        .hero-content h1 em {
+            color: #e3c38d;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            max-width: 420px;
+            margin: 27px 0 30px;
+            color: rgba(255, 250, 240, 0.84);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 22px;
+        }
+        
+        .hero-primary,
+        .hero-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 24px;
+            text-decoration: none;
+            font-size: 12px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        
+        .hero-primary {
+            padding: 15px 19px;
+            background: #e2c28d;
+            color: #263629;
+        }
+        
+        .hero-primary:hover {
+            background: #f0d9ae;
+            color: #263629;
+        }
+        
+        .hero-secondary {
+            padding: 12px 0;
+            color: #fffaf0;
+            border-bottom: 1px solid rgba(255, 250, 240, 0.55);
+        }
+        
+        .hero-secondary:hover {
+            color: #e2c28d;
+            border-color: #e2c28d;
+        }
+        
+        .hero-note {
+            position: absolute;
+            right: clamp(24px, 5vw, 72px);
+            bottom: 150px;
+            width: min(280px, 27%);
+            padding: 24px;
+            background: rgba(28, 39, 30, 0.84);
+            border: 1px solid rgba(255, 250, 240, 0.22);
+            backdrop-filter: blur(12px);
+        }
+        
+        .hero-note-number,
+        .hero-note-label {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+        }
+        
+        .hero-note-number {
+            color: #e2c28d;
+        }
+        
+        .hero-note-label {
+            margin: 28px 0 9px;
+            color: rgba(255, 250, 240, 0.68);
+        }
+        
+        .hero-note h2 {
+            margin: 0 0 10px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 27px;
+            font-weight: 400;
+        }
+        
+        .hero-note>p:not(.hero-note-label) {
+            margin: 0 0 18px;
+            color: rgba(255, 250, 240, 0.78);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+        
+        .hero-note a {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 13px;
+            border-top: 1px solid rgba(255, 250, 240, 0.23);
+            color: #e2c28d;
+            font-size: 10px;
+            text-decoration: none;
+        }
+        
+        .hero-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 20px clamp(24px, 4vw, 58px);
+            background: rgba(18, 28, 21, 0.68);
+            border-top: 1px solid rgba(255, 250, 240, 0.23);
+        }
+        
+        .hero-bottom-note {
+            max-width: 120px;
+            margin: 0;
+            color: rgba(255, 250, 240, 0.75);
+            font-size: 9px;
+            line-height: 1.8;
+            letter-spacing: 0.13em;
+        }
+        
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: clamp(18px, 4vw, 58px);
+        }
+        
+        .hero-stats div {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .hero-stats strong {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(23px, 3vw, 34px);
+            font-weight: 400;
+        }
+        
+        .hero-stats span {
+            color: rgba(255, 250, 240, 0.72);
+            font-size: 8px;
+            letter-spacing: 0.1em;
+        }
+        
+        .hero-scroll {
+            color: #fffaf0;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .hero-scroll span {
+            margin-left: 7px;
+            color: #e2c28d;
+        }
+        
+        @keyframes hero-arrive {
+            from {
+                opacity: 0.65;
+                transform: scale(1.045);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.015);
+            }
+        }
+        /* ===== EXPLORE SECTION ===== */
+        
+        .explore-section {
+            padding: 0 0 90px;
+            scroll-margin-top: 30px;
+        }
+        
+        .explore-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 35px;
+            margin: 0 auto 32px;
+        }
+        
+        .section-eyebrow {
+            margin-bottom: 15px;
+            color: var(--accent, #426657);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+        }
+        
+        .explore-heading h2 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(35px, 5vw, 58px);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+        
+        .explore-heading h2 em {
+            color: var(--accent, #426657);
+            font-weight: 400;
+        }
+        
+        .explore-intro {
+            max-width: 330px;
+            margin: 0 0 5px;
+            color: var(--muted, #777970);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+        
+        .filter-panel {
+            display: grid;
+            grid-template-columns: minmax(220px, 1.7fr) minmax(150px, 1fr) minmax(150px, 1fr) auto;
+            gap: 12px;
+            padding: 18px;
+            margin-bottom: 24px;
+            background: var(--white, #fffefa);
+            border: 1px solid var(--line, #e2e0d8);
+        }
+        
+        .filter-control {
+            min-width: 0;
+        }
+        
+        .filter-control label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--muted, #777970);
+            font-size: 10px;
+            letter-spacing: 0.07em;
+        }
+        
+        .filter-control .form-control,
+        .filter-control .form-select {
+            min-height: 43px;
+            border-color: var(--line, #e2e0d8);
+            border-radius: 0;
+            background-color: transparent;
+            color: var(--ink, #292c29);
+            font-size: 12px;
+            box-shadow: none;
+        }
+        
+        .filter-control .form-control:focus,
+        .filter-control .form-select:focus {
+            border-color: var(--accent, #426657);
+        }
+        
+        .filter-actions {
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .reset-button {
+            min-height: 43px;
+            padding: 0 15px;
+            border: 1px solid var(--line, #e2e0d8);
+            background: transparent;
+            color: var(--ink, #292c29);
+            font-size: 11px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        
+        .reset-button:hover {
+            border-color: var(--accent, #426657);
+            background: var(--accent-light, #e8eee8);
+        }
+        
+        .results-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 22px 0;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line, #e2e0d8);
+        }
+        
+        .results-toolbar p {
+            margin: 0;
+        }
+        
+        #viewLabel {
+            color: var(--ink, #292c29);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        #resultsCount {
+            color: var(--muted, #777970);
+            font-size: 11px;
+        }
+        /* ===== DESTINATION CARDS ===== */
+        
+        #destinationGrid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 42px 24px;
+        }
+        
+        .destination-item {
+            min-width: 0;
+            background: transparent;
+        }
+        
+        .destination-image-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: #e9e5da;
+        }
+        
+        .destination-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.55s ease;
+        }
+        
+        .destination-item:hover .destination-image {
+            transform: scale(1.045);
+        }
+        
+        .destination-category {
+            position: absolute;
+            bottom: 13px;
+            left: 13px;
+            padding: 7px 10px;
+            background: rgba(248, 247, 243, 0.94);
+            color: var(--ink, #292c29);
+            font-size: 9px;
+            letter-spacing: 0.04em;
+        }
+        
+        .save-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 50%;
+            background: rgba(248, 247, 243, 0.94);
+            color: var(--ink, #292c29);
+            font-size: 21px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        
+        .save-button:hover,
+        .save-button.is-saved {
+            background: var(--accent, #426657);
+            color: #fffefa;
+        }
+        
+        .destination-details {
+            padding: 17px 0 0;
+        }
+        
+        .destination-location {
+            margin: 0 0 7px;
+            color: var(--muted, #777970);
+            font-size: 10px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+        
+        .destination-name {
+            margin: 0 0 10px;
+            color: var(--ink, #292c29);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.15;
+        }
+        
+        .destination-summary {
+            min-height: 47px;
+            margin: 0 0 15px;
+            color: var(--muted, #777970);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+        
+        .destination-story-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 0 6px;
+            border: 0;
+            border-bottom: 1px solid var(--line, #e2e0d8);
+            background: transparent;
+            color: var(--accent, #426657);
+            font-size: 11px;
+            cursor: pointer;
+        }
+        
+        .destination-story-link:hover {
+            border-color: var(--accent, #426657);
+        }
+        /* ===== EMPTY STATE ===== */
+        
+        .empty-state {
+            padding: 55px 20px;
+            border: 1px solid var(--line, #e2e0d8);
+            background: var(--white, #fffefa);
+            text-align: center;
+        }
+        
+        .empty-state h3 {
+            margin: 0 0 10px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 30px;
+            font-weight: 400;
+        }
+        
+        .empty-state p {
+            max-width: 420px;
+            margin: 0 auto 20px;
+            color: var(--muted, #777970);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+        /* ===== SMALL EDITORIAL STRIP ===== */
+        
+        .journal-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            padding: 36px 0;
+            margin: 20px 0 70px;
+            border-top: 1px solid var(--line, #e2e0d8);
+            border-bottom: 1px solid var(--line, #e2e0d8);
+        }
+        
+        .journal-strip h2 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 400;
+            line-height: 1.15;
+        }
+        
+        .journal-strip h2 em {
+            color: var(--accent, #426657);
+        }
+        
+        .journal-strip p {
+            max-width: 460px;
+            margin: 0;
+            color: var(--muted, #777970);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+        
+        .journal-strip a {
+            display: inline-block;
+            margin-top: 13px;
+            color: var(--accent, #426657);
+            font-size: 11px;
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent, #426657);
+            padding-bottom: 5px;
+        }
+        /* ===== FOOTER ===== */
+        
+        .site-footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--line, #e2e0d8);
+        }
+        
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        
+        .footer-brand {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+        }
+        
+        .footer-note {
+            max-width: 340px;
+            margin: 0;
+            color: var(--muted, #777970);
+            font-size: 10px;
+            line-height: 1.8;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 18px;
+        }
+        
+        .footer-links a {
+            color: var(--muted, #777970);
+            font-size: 10px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent, #426657);
+        }
+        /* ===== STORY MODAL ===== */
+        
+        #storyModal .modal-content {
+            overflow: hidden;
+            border: 1px solid var(--line, #e2e0d8);
+            border-radius: 3px;
+            background: var(--paper, #f8f7f3);
+            color: var(--ink, #292c29);
+        }
+        
+        #storyModal .modal-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--line, #e2e0d8);
+        }
+        
+        #storyModal .modal-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        #storyModal .btn-close {
+            box-shadow: none;
+        }
+        
+        #storyModal .modal-body {
+            padding: 0;
+        }
+        
+        .story-detail-image {
+            display: block;
+            width: 100%;
+            max-height: 330px;
+            object-fit: cover;
+        }
+        
+        .story-detail {
+            padding-bottom: 25px;
+        }
+        
+        .story-detail-location,
+        .story-detail-title,
+        .story-detail-intro,
+        .story-detail-copy,
+        .story-detail-fact,
+        .story-save-button {
+            margin-left: 28px;
+            margin-right: 28px;
+        }
+        
+        .story-detail-location {
+            margin-top: 25px;
+            margin-bottom: 8px;
+            color: var(--accent, #426657);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .story-detail-title {
+            margin-top: 0;
+            margin-bottom: 13px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 400;
+        }
+        
+        .story-detail-intro {
+            color: var(--ink, #292c29);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .story-detail-copy {
+            margin-top: 16px;
+            color: var(--muted, #777970);
+            font-size: 13px;
+            line-height: 1.95;
+        }
+        
+        .story-detail-fact {
+            padding: 18px;
+            margin-top: 24px;
+            margin-bottom: 22px;
+            background: var(--accent-light, #e8eee8);
+        }
+        
+        .story-detail-fact-label {
+            margin-bottom: 7px;
+            color: var(--accent, #426657);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        
+        .story-detail-fact p:last-child {
+            margin-bottom: 0;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+        
+        .story-save-button {
+            border-radius: 0;
+            font-size: 12px;
+        }
+        /* ===== RESPONSIVE LAYOUT ===== */
+        
+        @media (max-width: 1000px) {
+            .nav-inner {
+                flex-wrap: wrap;
+            }
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                padding-top: 8px;
+                border-top: 1px solid var(--line, #e2e0d8);
+            }
+            .filter-panel {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            #destinationGrid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .hero-note {
+                right: 25px;
+                width: 245px;
+            }
+            .hero-content {
+                max-width: 57%;
+            }
+            .hero-content h1 {
+                font-size: clamp(55px, 7vw, 82px);
+            }
+            .hero-bottom-note {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 760px) {
+            .site-shell {
+                width: calc(100% - 32px);
+            }
+            .site-nav {
+                padding: 17px 0;
+            }
+            .nav-inner {
+                gap: 15px;
+            }
+            .brand-name {
+                font-size: 19px;
+            }
+            .nav-links {
+                gap: 24px;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+            .nav-links a {
+                flex-shrink: 0;
+                font-size: 10px;
+            }
+            .nav-saved {
+                margin-left: auto;
+            }
+            .home-hero {
+                min-height: 760px;
+                width: calc(100% - 20px);
+                margin: 0 auto 55px;
+                padding: 125px 25px 220px;
+            }
+            .hero-photo {
+                background-position: 58% center;
+            }
+            .hero-shade {
+                background: linear-gradient( 90deg, rgba(16, 29, 21, 0.82), rgba(16, 29, 21, 0.34)), linear-gradient( 0deg, rgba(14, 23, 17, 0.93), transparent 75%);
+            }
+            .hero-topline {
+                top: 22px;
+                left: 22px;
+                right: 22px;
+                font-size: 8px;
+            }
+            .hero-content {
+                max-width: 100%;
+                padding-top: 0;
+            }
+            .hero-content h1 {
+                font-size: clamp(52px, 12vw, 78px);
+            }
+            .hero-description {
+                max-width: 340px;
+                font-size: 13px;
+            }
+            .hero-note {
+                display: none;
+            }
+            .hero-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 18px;
+                padding: 20px 24px;
+            }
+            .hero-bottom-note {
+                display: block;
+                max-width: none;
+            }
+            .hero-stats {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+            }
+            .hero-stats strong {
+                font-size: 25px;
+            }
+            .hero-stats span {
+                max-width: 95px;
+                font-size: 7px;
+                line-height: 1.5;
+            }
+            .hero-scroll {
+                display: none;
+            }
+            .explore-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .explore-intro {
+                max-width: 100%;
+            }
+            .filter-panel {
+                grid-template-columns: 1fr;
+                padding: 14px;
+            }
+            .filter-actions .reset-button {
+                width: 100%;
+            }
+            #destinationGrid {
+                gap: 32px 17px;
+            }
+            .destination-name {
+                font-size: 24px;
+            }
+            .destination-summary {
+                min-height: 0;
+            }
+            .journal-strip {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .brand-tagline {
+                font-size: 7px;
+            }
+            .nav-links {
+                gap: 20px;
+            }
+            .nav-saved {
+                padding: 8px 10px;
+                font-size: 9px;
+            }
+            #destinationGrid {
+                grid-template-columns: 1fr;
+            }
+            .destination-image-wrap {
+                aspect-ratio: 5 / 3;
+            }
+            .destination-name {
+                font-size: 28px;
+            }
+            .results-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .hero-content h1 {
+                font-size: clamp(49px, 13vw, 64px);
+            }
+            .hero-actions {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-stats {
+                gap: 8px;
+            }
+            .hero-stats strong {
+                font-size: 22px;
+            }
+            .hero-stats span {
+                max-width: 85px;
+            }
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .hero-photo {
+                animation: none;
+            }
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
-<body id="top">
+<body>
 
-    <!-- NAVBAR -->
-    <header class="site-header">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container site-container">
+    <!-- NAVIGATION -->
 
-                <a class="navbar-brand" href="index.html" aria-label="Hidden Gems home">
-          hidden<span>gems</span><i>.</i>
-        </a>
+    <header class="site-nav">
+        <div class="site-shell nav-inner">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a href="index.html" class="brand-mark" aria-label="Hidden Gems home">
+                <span class="brand-symbol">h.</span>
 
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <div class="navbar-nav ms-auto align-items-lg-center">
-
-                        <a class="nav-link active" href="index.html" aria-current="page">
-              Explore Places
+                <span class="brand-copy">
+          <span class="brand-name">Hidden Gems</span>
+                <span class="brand-tagline">Find the other side</span>
+                </span>
             </a>
 
-                        <a class="nav-link" href="collections.html">
-              Collections
-            </a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html" class="active" aria-current="page">Explore places</a>
+                <a href="collections.html">Collections</a>
+                <a href="story.html">Our story</a>
+            </nav>
 
-                        <a class="nav-link" href="story.html">
-              Our Story
-            </a>
+            <button type="button" class="nav-saved" id="showFavoritesBtn" aria-pressed="false" title="Show your saved places">
+        <span class="saved-heart" aria-hidden="true">♡</span>
+        <span>Saved places</span>
+        <span id="favoriteCount">0</span>
+      </button>
 
-                    </div>
-                </div>
-
-            </div>
-        </nav>
+        </div>
     </header>
 
 
     <main>
 
-        <!-- HERO SECTION -->
-        <section class="intro-section">
-            <div class="container site-container">
+        <!-- HERO -->
 
-                <div class="intro-topline">
-                    <span>AN INDEPENDENT TRAVEL ARCHIVE</span>
-                    <span>01 — INDIA</span>
-                </div>
+        <section class="home-hero" aria-labelledby="heroTitle">
 
-                <div class="intro-copy">
+            <div class="hero-photo" role="img" aria-label="A heritage mansion surrounded by greenery in the warm evening light"></div>
+            <div class="hero-shade"></div>
 
-                    <p class="eyebrow">For the curious traveller</p>
+            <div class="hero-topline">
+                <span class="hero-location">INDIA, BEYOND THE USUAL</span>
+                <span class="hero-edition">A FIELD GUIDE TO HIDDEN GEMS</span>
+            </div>
 
-                    <h1>
-                        Somewhere<br> off the <span>usual route.</span>
-                    </h1>
+            <div class="hero-content">
 
-                    <div class="intro-bottom">
+                <p class="hero-eyebrow">
+                    <span class="hero-dot"></span> FOR THE CURIOUS TRAVELLER
+                </p>
 
-                        <p>
-                            A growing collection of overlooked places, local traditions and stories that deserve more than a passing glance.
-                        </p>
+                <h1 id="heroTitle">
+                    There is more<br> to India than<br>
+                    <em>you've seen.</em>
+                </h1>
 
-                        <a class="text-link" href="#explore">
-              Find your next place
-              <span aria-hidden="true">↘</span>
-            </a>
+                <p class="hero-description">
+                    Find quiet corners, forgotten stories, beautiful craft, and places that stay with you long after the journey ends.
+                </p>
 
-                    </div>
+                <div class="hero-actions">
+                    <a href="#exploreSection" class="hero-primary">
+            Find your next place <span aria-hidden="true">↗</span>
+          </a>
+
+                    <a href="collections.html" class="hero-secondary">
+            Browse collections
+          </a>
                 </div>
 
             </div>
-        </section>
 
+            <aside class="hero-note">
+                <span class="hero-note-number">01 / 06</span>
 
-        <!-- FEATURED DESTINATION -->
-        <section class="feature-section" aria-labelledby="featureHeading">
-            <div class="container site-container">
+                <p class="hero-note-label">A PLACE TO BEGIN</p>
 
-                <div class="feature-layout">
+                <h2>Southern India</h2>
 
-                    <a href="#explore" class="feature-image-link" id="featureLink" aria-label="Read the featured destination story">
+                <p>
+                    Old mansions, quiet coastlines, living craft traditions, and little towns with stories of their own.
+                </p>
 
-                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1400&q=85" alt="Architectural details of a historic building" class="feature-image" id="featureImage">
+                <a href="index.html?state=Tamil%20Nadu">
+          Start with Tamil Nadu <span aria-hidden="true">↗</span>
+        </a>
+            </aside>
 
-                        <span class="image-index">
-              FEATURED PLACE / 001
-            </span>
+            <div class="hero-bottom">
 
-                    </a>
+                <p class="hero-bottom-note">
+                    LESS RUSH. MORE DISCOVERY.
+                </p>
 
-                    <div class="feature-info">
-
-                        <p class="eyebrow">A place to begin</p>
-
-                        <h2 id="featureHeading">
-                            Chettinad,<br> Tamil Nadu
-                        </h2>
-
-                        <p id="featureDescription">
-                            Grand ancestral homes, intricate craftsmanship and a food culture shaped by generations of exchange.
-                        </p>
-
-                        <div class="feature-meta">
-                            <span id="featureState">TAMIL NADU</span>
-                            <span id="featureCategory">ARCHITECTURE &amp; CULTURE</span>
-                        </div>
-
-                        <button class="text-link feature-button" id="featureExploreBtn" type="button">
-
-              Read the story
-              <span aria-hidden="true">↗</span>
-
-            </button>
-
+                <div class="hero-stats">
+                    <div>
+                        <strong>12</strong>
+                        <span>PLACES TO EXPLORE</span>
                     </div>
 
+                    <div>
+                        <strong>06</strong>
+                        <span>WAYS TO DISCOVER</span>
+                    </div>
+
+                    <div>
+                        <strong>01</strong>
+                        <span>COUNTRY, ENDLESS STORIES</span>
+                    </div>
                 </div>
+
+                <a href="#exploreSection" class="hero-scroll">
+          SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
+        </a>
 
             </div>
+
         </section>
 
 
-        <!-- EXPLORE PLACES -->
-        <section class="explore-section" id="explore">
-            <div class="container site-container">
+        <!-- DESTINATION DIRECTORY -->
 
-                <div class="section-heading">
+        <section class="explore-section site-shell" id="exploreSection" aria-labelledby="exploreTitle">
 
-                    <div>
-                        <p class="eyebrow">The collection</p>
+            <div class="explore-heading">
 
-                        <h2>
-                            Places worth<br> knowing.
-                        </h2>
-                    </div>
+                <div>
+                    <p class="section-eyebrow">THE HIDDEN GEMS DIRECTORY</p>
 
-                    <p class="section-aside">
-                        Not a checklist. Just places with something to say.
-                    </p>
-
+                    <h2 id="exploreTitle">
+                        Good places don't<br>
+                        <em>always make the headlines.</em>
+                    </h2>
                 </div>
 
+                <p class="explore-intro">
+                    From quiet hill towns to streets full of history, these are places to explore at your own pace. Start anywhere.
+                </p>
 
-                <!-- SEARCH AND FILTERS -->
-                <div class="filter-bar" aria-label="Filter destinations">
-
-                    <div class="search-wrap">
-
-                        <label class="visually-hidden" for="searchInput">
-              Search destinations
-            </label>
-
-                        <input type="search" id="searchInput" placeholder="Search places, states or stories…" autocomplete="off">
-
-                        <span aria-hidden="true">⌕</span>
-
-                    </div>
+            </div>
 
 
-                    <div>
-                        <label class="visually-hidden" for="stateFilter">
-              Filter by state
-            </label>
+            <!-- SEARCH AND FILTERS -->
 
-                        <select id="stateFilter">
-              <option value="">All states</option>
-            </select>
-                    </div>
+            <div class="filter-panel">
 
+                <div class="filter-control">
+                    <label for="searchInput">Looking for somewhere?</label>
 
-                    <div>
-                        <label class="visually-hidden" for="categoryFilter">
-              Filter by category
-            </label>
+                    <input type="search" class="form-control" id="searchInput" placeholder="Try a place, state, or interest..." autocomplete="off">
+                </div>
 
-                        <select id="categoryFilter">
-              <option value="">All themes</option>
-            </select>
-                    </div>
+                <div class="filter-control">
+                    <label for="stateFilter">Choose a state</label>
 
+                    <select class="form-select" id="stateFilter">
+            <option value="">All states</option>
+          </select>
+                </div>
 
+                <div class="filter-control">
+                    <label for="categoryFilter">Choose an interest</label>
+
+                    <select class="form-select" id="categoryFilter">
+            <option value="">All categories</option>
+          </select>
+                </div>
+
+                <div class="filter-actions">
                     <button type="button" class="reset-button" id="resetFiltersBtn">
-
-            Reset ↺
-
+            Clear filters
           </button>
-
-                </div>
-
-
-                <!-- RESULTS INFORMATION -->
-                <div class="results-line">
-
-                    <p id="resultsCount" aria-live="polite">
-                        Loading places…
-                    </p>
-
-                    <p id="viewLabel">
-                        THE FULL COLLECTION
-                    </p>
-
-                </div>
-
-
-                <!-- DESTINATION CARDS ARE GENERATED BY JAVASCRIPT -->
-                <div class="destination-grid" id="destinationGrid" aria-live="polite">
-                </div>
-
-
-                <!-- EMPTY SEARCH RESULTS -->
-                <div class="empty-state" id="emptyState" hidden>
-
-                    <p class="eyebrow">Nothing found</p>
-
-                    <h3>Try another route.</h3>
-
-                    <p>
-                        Change your search or clear the filters to see more places.
-                    </p>
-
-                    <button type="button" class="text-link" id="emptyResetBtn">
-
-            Show all places
-            <span aria-hidden="true">↗</span>
-
-          </button>
-
                 </div>
 
             </div>
+
+
+            <!-- RESULTS SUMMARY -->
+
+            <div class="results-toolbar">
+                <p id="viewLabel" aria-live="polite">A few places worth knowing</p>
+                <p id="resultsCount" aria-live="polite">12 places to explore</p>
+            </div>
+
+
+            <!-- DESTINATIONS ARE INSERTED BY script.js -->
+
+            <div id="destinationGrid" aria-live="polite"></div>
+
+
+            <!-- EMPTY SEARCH RESULTS -->
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <h3>Nothing here just yet.</h3>
+
+                <p>
+                    Try another search or clear the filters. There may be another little corner of India waiting for you.
+                </p>
+
+                <button type="button" class="reset-button" id="emptyResetBtn">
+          Show me all places
+        </button>
+            </div>
+
         </section>
 
 
-        <!-- ABOUT THE PROJECT -->
-        <section class="note-section" id="about">
-            <div class="container site-container">
+        <!-- EDITORIAL STRIP -->
 
-                <p class="eyebrow">Why Hidden Gems exists</p>
+        <section class="site-shell">
+            <div class="journal-strip">
 
-                <div class="note-layout">
+                <div>
+                    <p class="section-eyebrow">A DIFFERENT KIND OF ITINERARY</p>
 
                     <h2>
-                        Travel is also<br> about <span>paying attention.</span>
+                        Take the road that<br>
+                        <em>wasn't on the list.</em>
                     </h2>
+                </div>
 
-                    <div class="note-copy">
+                <div>
+                    <p>
+                        Not every memorable trip needs a packed schedule. Sometimes it is a quiet street, a conversation with a local craftsperson, or a view you didn't plan to find.
+                    </p>
 
-                        <p>
-                            Some places are known for their monuments. Others reveal themselves through a local craft, an old street, a shared meal or a story passed between generations.
-                        </p>
-
-                        <p>
-                            Hidden Gems is a student-built discovery archive exploring India's quieter cultural corners, one place at a time.
-                        </p>
-
-                        <a class="text-link" href="story.html">
-              More about our story
-              <span aria-hidden="true">↗</span>
-            </a>
-
-                    </div>
-
+                    <a href="collections.html">
+            Find a collection to start with <span aria-hidden="true">↗</span>
+          </a>
                 </div>
 
             </div>
@@ -294,56 +1312,50 @@
 
 
     <!-- FOOTER -->
+
     <footer class="site-footer">
-        <div class="container site-container">
+        <div class="site-shell footer-inner">
 
-            <a class="navbar-brand" href="index.html">
-        hidden<span>gems</span><i>.</i>
-      </a>
+            <div class="footer-brand">Hidden Gems.</div>
 
-            <p>
-                A small archive of places with stories to tell.
+            <p class="footer-note">
+                A student project celebrating the lesser-known places, local traditions, and stories that make India special.
             </p>
 
-            <a href="#top" class="back-top">
-        Back to top ↑
-      </a>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">Explore</a>
+                <a href="collections.html">Collections</a>
+                <a href="story.html">Our story</a>
+            </nav>
 
         </div>
     </footer>
 
 
     <!-- DESTINATION STORY MODAL -->
-    <div class="modal fade" id="storyModal" tabindex="-1" aria-labelledby="storyTitle" aria-hidden="true">
 
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-
-            <div class="modal-content story-modal">
+    <div class="modal fade" id="storyModal" tabindex="-1" aria-labelledby="storyModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
 
                 <div class="modal-header">
+                    <h2 class="modal-title" id="storyModalTitle">A closer look</h2>
 
-                    <span class="eyebrow">A closer look</span>
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-          </button>
-
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body" id="storyModalBody">
-                    <!-- Story content is inserted by script.js -->
+                    <p class="p-4">Choose a place to discover its story.</p>
                 </div>
 
             </div>
-
         </div>
-
     </div>
 
 
-    <!-- BOOTSTRAP JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SCRIPTS -->
 
-    <!-- CUSTOM JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 
 </body>
