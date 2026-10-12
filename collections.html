@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+
+    <title>Collections — Hidden Gems</title>
+    <meta name="description" content="Explore curated collections of lesser-known destinations, cultural traditions, historic places and natural landscapes across India.">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Page-specific styling -->
+    <style>
+        .collection-intro {
+            padding: 22px 0 70px;
+        }
+        
+        .collection-hero {
+            padding-top: clamp(55px, 8vw, 100px);
+        }
+        
+        .collection-hero h1 {
+            max-width: 950px;
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(55px, 9vw, 108px);
+            font-weight: 500;
+            letter-spacing: -0.085em;
+            line-height: 0.98;
+        }
+        
+        .collection-hero h1 span {
+            color: var(--accent);
+        }
+        
+        .collection-intro-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-top: 32px;
+        }
+        
+        .collection-intro-bottom p {
+            max-width: 420px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+        
+        .collection-list-section {
+            padding: 70px 0 100px;
+            border-top: 1px solid var(--line);
+            background: var(--white);
+        }
+        
+        .collection-section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 25px;
+            margin-bottom: 38px;
+        }
+        
+        .collection-section-heading h2 {
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(37px, 5vw, 60px);
+            font-weight: 500;
+            letter-spacing: -0.07em;
+            line-height: 1.05;
+        }
+        
+        .collection-section-heading>p {
+            max-width: 230px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 48px 28px;
+        }
+        
+        .collection-card {
+            min-width: 0;
+        }
+        
+        .collection-card-image {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            background: #e5e7e2;
+        }
+        
+        .collection-card-image img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 5 / 3;
+            object-fit: cover;
+            transition: transform 450ms ease;
+        }
+        
+        .collection-card-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .collection-number {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 10px 13px;
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        
+        .collection-card-content {
+            padding-top: 19px;
+        }
+        
+        .collection-card-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 11px;
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .collection-card-content h3 {
+            margin: 0 0 12px;
+            font-family: var(--serif);
+            font-size: clamp(29px, 3.2vw, 40px);
+            font-weight: 400;
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+        }
+        
+        .collection-card-content>p {
+            max-width: 480px;
+            margin-bottom: 18px;
+            color: #646a64;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+        
+        .collection-card-content .text-link {
+            margin-top: 2px;
+        }
+        
+        .collection-note {
+            margin-top: 85px;
+            padding: 35px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        
+        .collection-note-inner {
+            display: grid;
+            grid-template-columns: 1fr 0.7fr;
+            gap: 35px;
+            align-items: center;
+        }
+        
+        .collection-note h2 {
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(35px, 5vw, 57px);
+            font-weight: 500;
+            letter-spacing: -0.07em;
+            line-height: 1.08;
+        }
+        
+        .collection-note h2 span {
+            color: var(--accent);
+        }
+        
+        .collection-note p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+        
+        @media (max-width: 600px) {
+            .collection-intro {
+                padding-bottom: 50px;
+            }
+            .collection-hero {
+                padding-top: 60px;
+            }
+            .collection-hero h1 {
+                font-size: clamp(50px, 13vw, 72px);
+            }
+            .collection-intro-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .collection-list-section {
+                padding: 55px 0 70px;
+            }
+            .collection-section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .collection-grid {
+                grid-template-columns: 1fr;
+                gap: 38px;
+            }
+            .collection-card-image img {
+                aspect-ratio: 5 / 3;
+            }
+            .collection-note {
+                margin-top: 60px;
+            }
+            .collection-note-inner {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .collection-card-image img {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container site-container">
+
+                <a class="navbar-brand" href="index.html" aria-label="Hidden Gems home">
+          hidden<span>gems</span><i>.</i>
+        </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="navbar-nav ms-auto align-items-lg-center">
+
+                        <a class="nav-link" href="index.html">
+              Explore Places
+            </a>
+
+                        <a class="nav-link active" href="collections.html" aria-current="page">
+              Collections
+            </a>
+
+                        <a class="nav-link" href="story.html">
+              Our Story
+            </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- PAGE INTRO -->
+        <section class="collection-intro">
+            <div class="container site-container">
+
+                <div class="intro-topline">
+                    <span>THE HIDDEN GEMS ARCHIVE</span>
+                    <span>02 — COLLECTIONS</span>
+                </div>
+
+                <div class="collection-hero">
+
+                    <p class="eyebrow">A different way to explore</p>
+
+                    <h1>
+                        Every place<br> has a <span>story.</span>
+                    </h1>
+
+                    <div class="collection-intro-bottom">
+
+                        <p>
+                            Some journeys begin with a landscape. Others begin with a craft, an old building or a tradition that has lasted for generations. Start with what interests you.
+                        </p>
+
+                        <a class="text-link" href="#collections">
+              Browse the collections
+              <span aria-hidden="true">↘</span>
+            </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- COLLECTIONS -->
+        <section class="collection-list-section" id="collections">
+            <div class="container site-container">
+
+                <div class="collection-section-heading">
+                    <div>
+                        <p class="eyebrow">Browse by interest</p>
+                        <h2>Find your kind<br>of somewhere.</h2>
+                    </div>
+
+                    <p>
+                        A few ways into the archive. Choose a theme and see where it takes you.
+                    </p>
+                </div>
+
+
+                <div class="collection-grid">
+
+                    <!-- COLLECTION 1 -->
+                    <article class="collection-card">
+
+                        <a class="collection-card-image" href="index.html?state=Tamil%20Nadu">
+                            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85" alt="Architectural details and historic building forms" loading="lazy">
+
+                            <span class="collection-number">COLLECTION / 01</span>
+                        </a>
+
+                        <div class="collection-card-content">
+
+                            <div class="collection-card-meta">
+                                <span>REGIONAL STORIES</span>
+                                <span>01</span>
+                            </div>
+
+                            <h3>Hidden Tamil Nadu</h3>
+
+                            <p>
+                                From Chettinad's ancestral homes to the mangroves of Pichavaram, discover the places and traditions that give Tamil Nadu its many layers.
+                            </p>
+
+                            <a class="text-link" href="index.html?state=Tamil%20Nadu">
+                Explore Tamil Nadu
+                <span aria-hidden="true">↗</span>
+              </a>
+
+                        </div>
+                    </article>
+
+
+                    <!-- COLLECTION 2 -->
+                    <article class="collection-card">
+
+                        <a class="collection-card-image" href="index.html?category=History">
+                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85" alt="A dramatic landscape with distant mountain forms" loading="lazy">
+
+                            <span class="collection-number">COLLECTION / 02</span>
+                        </a>
+
+                        <div class="collection-card-content">
+
+                            <div class="collection-card-meta">
+                                <span>PAST &amp; PRESENT</span>
+                                <span>02</span>
+                            </div>
+
+                            <h3>Echoes of the Past</h3>
+
+                            <p>
+                                Historic towns, old trading centres, forgotten routes and architecture that continues to shape the places around it.
+                            </p>
+
+                            <a class="text-link" href="index.html?category=History">
+                Explore historic places
+                <span aria-hidden="true">↗</span>
+              </a>
+
+                        </div>
+                    </article>
+
+
+                    <!-- COLLECTION 3 -->
+                    <article class="collection-card">
+
+                        <a class="collection-card-image" href="index.html?category=Nature">
+                            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85" alt="A peaceful natural landscape" loading="lazy">
+
+                            <span class="collection-number">COLLECTION / 03</span>
+                        </a>
+
+                        <div class="collection-card-content">
+
+                            <div class="collection-card-meta">
+                                <span>LAND &amp; WATER</span>
+                                <span>03</span>
+                            </div>
+
+                            <h3>Out in the Open</h3>
+
+                            <p>
+                                Mountain valleys, forested hills, river islands and coastlines where the landscape becomes part of the journey itself.
+                            </p>
+
+                            <a class="text-link" href="index.html?category=Nature">
+                Explore nature
+                <span aria-hidden="true">↗</span>
+              </a>
+
+                        </div>
+                    </article>
+
+
+                    <!-- COLLECTION 4 -->
+                    <article class="collection-card">
+
+                        <a class="collection-card-image" href="index.html?category=Craft">
+                            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=85" alt="Architectural surfaces and detailed craftsmanship" loading="lazy">
+
+                            <span class="collection-number">COLLECTION / 04</span>
+                        </a>
+
+                        <div class="collection-card-content">
+
+                            <div class="collection-card-meta">
+                                <span>MADE BY HAND</span>
+                                <span>04</span>
+                            </div>
+
+                            <h3>Made by Hand</h3>
+
+                            <p>
+                                Traditional textiles, handmade tiles, intricate materials and regional crafts shaped by skill, patience and local knowledge.
+                            </p>
+
+                            <a class="text-link" href="index.html?category=Craft">
+                Explore local crafts
+                <span aria-hidden="true">↗</span>
+              </a>
+
+                        </div>
+                    </article>
+
+
+                    <!-- COLLECTION 5 -->
+                    <article class="collection-card">
+
+                        <a class="collection-card-image" href="index.html?category=Culture">
+                            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="An expansive landscape under a wide sky" loading="lazy">
+
+                            <span class="collection-number">COLLECTION / 05</span>
+                        </a>
+
+                        <div class="collection-card-content">
+
+                            <div class="collection-card-meta">
+                                <span>PEOPLE &amp; TRADITIONS</span>
+                                <span>05</span>
+                            </div>
+
+                            <h3>Living Traditions</h3>
+
+                            <p>
+                                Communities, festivals, foodways and cultural practices that connect people to their history and to one another.
+                            </p>
+
+                            <a class="text-link" href="index.html?category=Culture">
+                Explore cultural stories
+                <span aria-hidden="true">↗</span>
+              </a>
+
+                        </div>
+                    </article>
+
+
+                    <!-- COLLECTION 6 -->
+                    <article class="collection-card">
+
+                        <a class="collection-card-image" href="index.html?category=Architecture">
+                            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85" alt="Architectural forms and building details" loading="lazy">
+
+                            <span class="collection-number">COLLECTION / 06</span>
+                        </a>
+
+                        <div class="collection-card-content">
+
+                            <div class="collection-card-meta">
+                                <span>SPACES &amp; STRUCTURES</span>
+                                <span>06</span>
+                            </div>
+
+                            <h3>Built to Be Remembered</h3>
+
+                            <p>
+                                Stepwells, temples, ancestral houses and buildings that reveal how people have lived, gathered and expressed their identity.
+                            </p>
+
+                            <a class="text-link" href="index.html?category=Architecture">
+                Explore architecture
+                <span aria-hidden="true">↗</span>
+              </a>
+
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- CLOSING NOTE -->
+                <div class="collection-note">
+
+                    <div class="collection-note-inner">
+
+                        <h2>
+                            No fixed itinerary.<br> Just <span>follow a story.</span>
+                        </h2>
+
+                        <div>
+                            <p>
+                                These collections are starting points, not complete lists. Explore a theme, follow a detail that catches your attention, and discover somewhere new.
+                            </p>
+
+                            <a class="text-link" href="index.html" style="margin-top: 20px;">
+                Browse all places
+                <span aria-hidden="true">↗</span>
+              </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container site-container">
+
+            <a class="navbar-brand" href="index.html">
+        hidden<span>gems</span><i>.</i>
+      </a>
+
+            <p>A small archive of places with stories to tell.</p>
+
+            <a href="#top" class="back-top">
+        Back to top ↑
+      </a>
+
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

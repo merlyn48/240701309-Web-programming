@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+
+    <title>Our Story — Hidden Gems</title>
+    <meta name="description" content="Learn about Hidden Gems, a student-built travel discovery project exploring lesser-known destinations and cultural stories across India.">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Story page styling -->
+    <style>
+        .story-intro {
+            padding: 22px 0 85px;
+        }
+        
+        .story-hero {
+            padding-top: clamp(55px, 8vw, 100px);
+        }
+        
+        .story-hero h1 {
+            max-width: 1000px;
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(55px, 9.5vw, 112px);
+            font-weight: 500;
+            letter-spacing: -0.085em;
+            line-height: 0.98;
+        }
+        
+        .story-hero h1 span {
+            color: var(--accent);
+        }
+        
+        .story-hero-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-top: 35px;
+        }
+        
+        .story-hero-bottom p {
+            max-width: 440px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+        
+        .story-feature {
+            padding: 0 0 90px;
+        }
+        
+        .story-feature-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: clamp(35px, 7vw, 95px);
+        }
+        
+        .story-feature-image {
+            display: block;
+            width: 100%;
+            min-height: 320px;
+            max-height: 500px;
+            object-fit: cover;
+            background: #e5e7e2;
+        }
+        
+        .story-feature-copy h2 {
+            margin: 0 0 22px;
+            font-family: var(--serif);
+            font-size: clamp(36px, 4.5vw, 54px);
+            font-weight: 400;
+            letter-spacing: -0.055em;
+            line-height: 1.1;
+        }
+        
+        .story-feature-copy p:not(.eyebrow) {
+            color: #626862;
+            font-size: 13px;
+            line-height: 2;
+        }
+        
+        .story-body-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+            background: var(--white);
+        }
+        
+        .story-body-grid {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: clamp(35px, 8vw, 110px);
+        }
+        
+        .story-side-label {
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        
+        .story-body-copy h2 {
+            margin: 0 0 22px;
+            font-family: var(--display);
+            font-size: clamp(36px, 5vw, 57px);
+            font-weight: 500;
+            letter-spacing: -0.07em;
+            line-height: 1.08;
+        }
+        
+        .story-body-copy p {
+            max-width: 650px;
+            margin-bottom: 22px;
+            color: #606761;
+            font-size: 14px;
+            line-height: 2;
+        }
+        
+        .story-values-section {
+            padding: 80px 0 90px;
+        }
+        
+        .story-values-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .story-values-heading h2 {
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(40px, 6vw, 65px);
+            font-weight: 500;
+            letter-spacing: -0.075em;
+            line-height: 1.05;
+        }
+        
+        .story-values-heading>p {
+            max-width: 220px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+        
+        .story-values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        
+        .story-value {
+            padding: 26px 24px 30px 0;
+        }
+        
+        .story-value+.story-value {
+            padding-left: 24px;
+            border-left: 1px solid var(--line);
+        }
+        
+        .story-value-number {
+            display: block;
+            margin-bottom: 25px;
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        
+        .story-value h3 {
+            margin-bottom: 12px;
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+        }
+        
+        .story-value p {
+            margin: 0;
+            color: #686e68;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+        
+        .story-cta {
+            padding: 45px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        
+        .story-cta-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .story-cta h2 {
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(35px, 5vw, 55px);
+            font-weight: 500;
+            letter-spacing: -0.07em;
+            line-height: 1.1;
+        }
+        
+        .story-cta h2 span {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 767px) {
+            .story-intro {
+                padding-bottom: 55px;
+            }
+            .story-hero {
+                padding-top: 60px;
+            }
+            .story-hero h1 {
+                font-size: clamp(49px, 12.5vw, 75px);
+            }
+            .story-hero-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .story-feature {
+                padding-bottom: 60px;
+            }
+            .story-feature-layout {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .story-feature-image {
+                min-height: 0;
+                height: 300px;
+            }
+            .story-body-section,
+            .story-values-section {
+                padding: 60px 0;
+            }
+            .story-body-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .story-values-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .story-values-grid {
+                grid-template-columns: 1fr;
+            }
+            .story-value,
+            .story-value+.story-value {
+                padding: 24px 0;
+                border-left: 0;
+            }
+            .story-value+.story-value {
+                border-top: 1px solid var(--line);
+            }
+            .story-value-number {
+                margin-bottom: 12px;
+            }
+            .story-cta-layout {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container site-container">
+
+                <a class="navbar-brand" href="index.html" aria-label="Hidden Gems home">
+          hidden<span>gems</span><i>.</i>
+        </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="navbar-nav ms-auto align-items-lg-center">
+
+                        <a class="nav-link" href="index.html">
+              Explore Places
+            </a>
+
+                        <a class="nav-link" href="collections.html">
+              Collections
+            </a>
+
+                        <a class="nav-link active" href="story.html" aria-current="page">
+              Our Story
+            </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+        <section class="story-intro">
+            <div class="container site-container">
+
+                <div class="intro-topline">
+                    <span>THE IDEA BEHIND THE PROJECT</span>
+                    <span>03 — OUR STORY</span>
+                </div>
+
+                <div class="story-hero">
+
+                    <p class="eyebrow">A little about us</p>
+
+                    <h1>
+                        Not every<br> story is on the <span>map.</span>
+                    </h1>
+
+                    <div class="story-hero-bottom">
+
+                        <p>
+                            Hidden Gems began with a simple thought: there is more to discovering a place than visiting its most famous landmark.
+                        </p>
+
+                        <a class="text-link" href="#the-idea">
+              Get to know the project
+              <span aria-hidden="true">↘</span>
+            </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- THE IDEA -->
+        <section class="story-feature" id="the-idea">
+            <div class="container site-container">
+
+                <div class="story-feature-layout">
+
+                    <img class="story-feature-image" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85" alt="A landscape that invites a slower kind of travel" loading="lazy">
+
+                    <div class="story-feature-copy">
+
+                        <p class="eyebrow">Where the idea started</p>
+
+                        <h2>
+                            Looking beyond the familiar.
+                        </h2>
+
+                        <p>
+                            Travel websites often lead us towards the same well-known destinations. But across India, there are smaller towns, traditional crafts, unusual landscapes and historic neighbourhoods that have their own stories to tell.
+                        </p>
+
+                        <p>
+                            Hidden Gems is a way to bring some of those places into one accessible collection, making it easier to explore India through its local character, culture and history.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PROJECT PURPOSE -->
+        <section class="story-body-section">
+            <div class="container site-container">
+
+                <div class="story-body-grid">
+
+                    <div>
+                        <p class="story-side-label">01 / The purpose</p>
+                    </div>
+
+                    <div class="story-body-copy">
+
+                        <h2>
+                            Discovery should be about more than a destination.
+                        </h2>
+
+                        <p>
+                            A place becomes memorable through the details that make it different. It might be the way a building was constructed, the story behind a local textile, the history of a trading town or the landscape that shapes everyday life.
+                        </p>
+
+                        <p>
+                            The purpose of this project is to introduce visitors to lesser-known destinations and give them a starting point for learning more. Each entry brings together a location, a short introduction and a cultural or historical detail.
+                        </p>
+
+                        <p>
+                            The website is designed as a simple discovery tool. Visitors can search for places, filter destinations by state or theme, save favourites and open individual stories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- OUR APPROACH -->
+        <section class="story-values-section">
+            <div class="container site-container">
+
+                <div class="story-values-heading">
+
+                    <div>
+                        <p class="eyebrow">What guides the archive</p>
+
+                        <h2>
+                            Three things<br> we care about.
+                        </h2>
+                    </div>
+
+                    <p>
+                        The principles behind the way destinations are presented.
+                    </p>
+
+                </div>
+
+
+                <div class="story-values-grid">
+
+                    <article class="story-value">
+
+                        <span class="story-value-number">01 / CURIOSITY</span>
+
+                        <h3>Look closer</h3>
+
+                        <p>
+                            Go beyond a place name. Explore the traditions, landscapes, materials and everyday details that give a destination its identity.
+                        </p>
+
+                    </article>
+
+
+                    <article class="story-value">
+
+                        <span class="story-value-number">02 / CONTEXT</span>
+
+                        <h3>Tell the story</h3>
+
+                        <p>
+                            Share useful context about a place instead of treating destinations as names on a checklist. History and local culture matter as much as scenery.
+                        </p>
+
+                    </article>
+
+
+                    <article class="story-value">
+
+                        <span class="story-value-number">03 / ACCESS</span>
+
+                        <h3>Keep it simple</h3>
+
+                        <p>
+                            Make discovery straightforward with a clean interface, searchable entries, practical filters and saved places visitors can return to.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- HOW THE PROJECT WORKS -->
+        <section class="story-body-section">
+            <div class="container site-container">
+
+                <div class="story-body-grid">
+
+                    <div>
+                        <p class="story-side-label">02 / Behind the website</p>
+                    </div>
+
+                    <div class="story-body-copy">
+
+                        <h2>
+                            A small project, built step by step.
+                        </h2>
+
+                        <p>
+                            Hidden Gems is a frontend web development project created using HTML, CSS, Bootstrap and vanilla JavaScript.
+                        </p>
+
+                        <p>
+                            HTML structures the pages, CSS defines the visual style, Bootstrap helps with responsive layouts and navigation, and JavaScript powers destination search, category filters, favourites and story pop-ups.
+                        </p>
+
+                        <p>
+                            Saved favourites use the browser's local storage, allowing the visitor to return to saved destinations on the same browser without needing an account or a database.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CALL TO ACTION -->
+        <section class="story-cta">
+            <div class="container site-container">
+
+                <div class="story-cta-layout">
+
+                    <h2>
+                        Your next discovery<br> could be <span>somewhere nearby.</span>
+                    </h2>
+
+                    <a class="text-link" href="index.html">
+            Explore the places
+            <span aria-hidden="true">↗</span>
+          </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container site-container">
+
+            <a class="navbar-brand" href="index.html">
+        hidden<span>gems</span><i>.</i>
+      </a>
+
+            <p>A small archive of places with stories to tell.</p>
+
+            <a href="#top" class="back-top">
+        Back to top ↑
+      </a>
+
+        </div>
+    </footer>
+
+
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

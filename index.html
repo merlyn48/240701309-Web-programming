@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+
+    <title>Hidden Gems — Places Worth Finding</title>
+    <meta name="description" content="Discover lesser-known destinations, local traditions and cultural stories across India.">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container site-container">
+
+                <a class="navbar-brand" href="index.html" aria-label="Hidden Gems home">
+          hidden<span>gems</span><i>.</i>
+        </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="navbar-nav ms-auto align-items-lg-center">
+
+                        <a class="nav-link active" href="index.html" aria-current="page">
+              Explore Places
+            </a>
+
+                        <a class="nav-link" href="collections.html">
+              Collections
+            </a>
+
+                        <a class="nav-link" href="story.html">
+              Our Story
+            </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="intro-section">
+            <div class="container site-container">
+
+                <div class="intro-topline">
+                    <span>AN INDEPENDENT TRAVEL ARCHIVE</span>
+                    <span>01 — INDIA</span>
+                </div>
+
+                <div class="intro-copy">
+
+                    <p class="eyebrow">For the curious traveller</p>
+
+                    <h1>
+                        Somewhere<br> off the <span>usual route.</span>
+                    </h1>
+
+                    <div class="intro-bottom">
+
+                        <p>
+                            A growing collection of overlooked places, local traditions and stories that deserve more than a passing glance.
+                        </p>
+
+                        <a class="text-link" href="#explore">
+              Find your next place
+              <span aria-hidden="true">↘</span>
+            </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FEATURED DESTINATION -->
+        <section class="feature-section" aria-labelledby="featureHeading">
+            <div class="container site-container">
+
+                <div class="feature-layout">
+
+                    <a href="#explore" class="feature-image-link" id="featureLink" aria-label="Read the featured destination story">
+
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1400&q=85" alt="Architectural details of a historic building" class="feature-image" id="featureImage">
+
+                        <span class="image-index">
+              FEATURED PLACE / 001
+            </span>
+
+                    </a>
+
+                    <div class="feature-info">
+
+                        <p class="eyebrow">A place to begin</p>
+
+                        <h2 id="featureHeading">
+                            Chettinad,<br> Tamil Nadu
+                        </h2>
+
+                        <p id="featureDescription">
+                            Grand ancestral homes, intricate craftsmanship and a food culture shaped by generations of exchange.
+                        </p>
+
+                        <div class="feature-meta">
+                            <span id="featureState">TAMIL NADU</span>
+                            <span id="featureCategory">ARCHITECTURE &amp; CULTURE</span>
+                        </div>
+
+                        <button class="text-link feature-button" id="featureExploreBtn" type="button">
+
+              Read the story
+              <span aria-hidden="true">↗</span>
+
+            </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- EXPLORE PLACES -->
+        <section class="explore-section" id="explore">
+            <div class="container site-container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">The collection</p>
+
+                        <h2>
+                            Places worth<br> knowing.
+                        </h2>
+                    </div>
+
+                    <p class="section-aside">
+                        Not a checklist. Just places with something to say.
+                    </p>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTERS -->
+                <div class="filter-bar" aria-label="Filter destinations">
+
+                    <div class="search-wrap">
+
+                        <label class="visually-hidden" for="searchInput">
+              Search destinations
+            </label>
+
+                        <input type="search" id="searchInput" placeholder="Search places, states or stories…" autocomplete="off">
+
+                        <span aria-hidden="true">⌕</span>
+
+                    </div>
+
+
+                    <div>
+                        <label class="visually-hidden" for="stateFilter">
+              Filter by state
+            </label>
+
+                        <select id="stateFilter">
+              <option value="">All states</option>
+            </select>
+                    </div>
+
+
+                    <div>
+                        <label class="visually-hidden" for="categoryFilter">
+              Filter by category
+            </label>
+
+                        <select id="categoryFilter">
+              <option value="">All themes</option>
+            </select>
+                    </div>
+
+
+                    <button type="button" class="reset-button" id="resetFiltersBtn">
+
+            Reset ↺
+
+          </button>
+
+                </div>
+
+
+                <!-- RESULTS INFORMATION -->
+                <div class="results-line">
+
+                    <p id="resultsCount" aria-live="polite">
+                        Loading places…
+                    </p>
+
+                    <p id="viewLabel">
+                        THE FULL COLLECTION
+                    </p>
+
+                </div>
+
+
+                <!-- DESTINATION CARDS ARE GENERATED BY JAVASCRIPT -->
+                <div class="destination-grid" id="destinationGrid" aria-live="polite">
+                </div>
+
+
+                <!-- EMPTY SEARCH RESULTS -->
+                <div class="empty-state" id="emptyState" hidden>
+
+                    <p class="eyebrow">Nothing found</p>
+
+                    <h3>Try another route.</h3>
+
+                    <p>
+                        Change your search or clear the filters to see more places.
+                    </p>
+
+                    <button type="button" class="text-link" id="emptyResetBtn">
+
+            Show all places
+            <span aria-hidden="true">↗</span>
+
+          </button>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ABOUT THE PROJECT -->
+        <section class="note-section" id="about">
+            <div class="container site-container">
+
+                <p class="eyebrow">Why Hidden Gems exists</p>
+
+                <div class="note-layout">
+
+                    <h2>
+                        Travel is also<br> about <span>paying attention.</span>
+                    </h2>
+
+                    <div class="note-copy">
+
+                        <p>
+                            Some places are known for their monuments. Others reveal themselves through a local craft, an old street, a shared meal or a story passed between generations.
+                        </p>
+
+                        <p>
+                            Hidden Gems is a student-built discovery archive exploring India's quieter cultural corners, one place at a time.
+                        </p>
+
+                        <a class="text-link" href="story.html">
+              More about our story
+              <span aria-hidden="true">↗</span>
+            </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container site-container">
+
+            <a class="navbar-brand" href="index.html">
+        hidden<span>gems</span><i>.</i>
+      </a>
+
+            <p>
+                A small archive of places with stories to tell.
+            </p>
+
+            <a href="#top" class="back-top">
+        Back to top ↑
+      </a>
+
+        </div>
+    </footer>
+
+
+    <!-- DESTINATION STORY MODAL -->
+    <div class="modal fade" id="storyModal" tabindex="-1" aria-labelledby="storyTitle" aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content story-modal">
+
+                <div class="modal-header">
+
+                    <span class="eyebrow">A closer look</span>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+
+                </div>
+
+                <div class="modal-body" id="storyModalBody">
+                    <!-- Story content is inserted by script.js -->
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CUSTOM JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
